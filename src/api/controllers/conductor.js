@@ -48,6 +48,7 @@ const updateConductor = async (req, res, next) => {
     return res.status(200).json(updatedConductor)
   } catch (error) {
     console.error(error)
+
     return res.status(500).json('Ha fallado la peticion')
   }
 }

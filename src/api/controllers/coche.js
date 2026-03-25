@@ -43,9 +43,9 @@ const updateCoche = async (req, res, next) => {
     const coche = await Coche.findById(id)
     const conductores = coche.conductores.map(objectId => objectId.toString())
     
-    req.body.conductores = req.body.conductores || []
-
-    req.body.conductores = [...new Set([...req.body.conductores, ...conductores])]
+    if (req.body.conductores) {
+      req.body.conductores = [...new Set([...req.body.conductores, ...conductores])]
+    }
     
     
     const updatedCoche = await Coche.findByIdAndUpdate(id, req.body, {
